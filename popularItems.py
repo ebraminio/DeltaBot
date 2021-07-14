@@ -7,10 +7,10 @@ import requests
 import json
 from datetime import datetime, timedelta
 
-site = pywikibot.Site('wikidata','wikidata')
+site = pywikibot.Site('wikidata', 'wikidata')
 
-blacklist = ['Q4115189','Q13406268','Q15397819','Q16943273','Q17339402', 'Q85409596', 'Q85409446', 'Q85409310', 'Q85409163', 'Q85408938', 'Q85408509'] #sandbox, tour items
-blacklist2 = ['Q4167410', 'Q11266439', 'Q4167836'] #disambiguation, template, category items
+blacklist = ['Q4115189', 'Q13406268', 'Q15397819', 'Q16943273', 'Q17339402', 'Q85409596', 'Q85409446', 'Q85409310', 'Q85409163', 'Q85408938', 'Q85408509'] # sandbox, tour items
+blacklist2 = ['Q4167410', 'Q11266439', 'Q4167836'] # disambiguation, template, category items
 
 text = ''
 i = 0
@@ -46,7 +46,7 @@ for item in allrevisions:
     if len(set(allrevisions[item])) >= 3: #require at least 3 distinct users
         revisioncount[item] = len(allrevisions[item])
 
-sorted = [k for k, v in sorted(revisioncount.items(), key=lambda item: item[1], reverse=True)] # sort by number of edits
+sorted = [k for k, _ in sorted(revisioncount.items(), key=lambda item: item[1], reverse=True)] # sort by number of edits
 for q in sorted:
 
     # check if item is not in blacklist
